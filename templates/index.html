@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Predictions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 80px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        input[type="date"] {
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            margin: 20px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #d4af37;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #c29e2e;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+
+        strong {
+            color: #2d572c;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gold Rate Predictions</h1>
+        <p>Enter a date to predict the gold rate</p>
+        <form method="POST">
+            <input type="date" name="date" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h3>Prediction Result</h3>
+            <p>
+                Predicted gold rate for <strong>{{ request.form['date'] }}</strong>: 
+                <strong>{{ "%.2f"|format(prediction) }}</strong>
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
